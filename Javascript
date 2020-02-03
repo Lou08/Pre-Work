@@ -1,0 +1,137 @@
+
+// Rover Object Goes Here
+// ======================
+const rover = {
+  
+  direction:'N',
+  //defaultDirecction:'N'
+  x:0,
+  y:0,
+  travelLog:[{x:0, y:0}]
+  
+};
+
+/**************************************************
+*****************FUNCTIONS*************************
+***************************************************/
+
+/*GIRAR A LA IZQUIERDA*/
+function turnLeft(rover,direct){
+  console.log("turnLeft was called!");
+  
+  if(rover.direction === 'N'){
+    
+    rover.direction = 'W';
+    console.log('Rover is facing North and turns left => Rover is now facing West');
+  }
+  
+  else if(rover.direction ==='W')
+    {
+      rover.direction = 'S';
+      console.log('Rover is facing West and turns left => Rover is now facing South');
+    }
+  else if (rover.direction ==='S'){
+    
+    rover.direction = 'E';
+    console.log('Rover is facing South and turns left => Rover is now facing East');
+  }
+  else{
+    rover.direction = 'N';
+    console.log('Rover is facing East and turns left => Rover is now facing North');
+  }
+  console.log('the position is: ', rover.travelLog);
+}
+
+/*GIRAR A LA DERECHA*/
+
+function turnRight(rover,direct){
+  console.log("turnRight was called!");
+
+  if(rover.direction === 'N'){
+    
+    rover.direction = 'E';
+    console.log('Rover is facing North and turns right => Rover is now facing East');
+  }
+    else if(rover.direction ==='E')
+    {
+      rover.direction = 'S';
+      console.log('Rover is facing East and turns left => Rover is now facing South');
+    }
+   else if(rover.direction ==='S')
+    {
+      rover.direction = 'W';
+      console.log('Rover is facing South and turns left => Rover is now facing West');
+    }
+  else {
+    
+    rover.direction = 'N';
+    console.log('Rover is facing West and turns left => Rover is now facing North');
+  }
+    
+  }
+
+/*MOVERSE HACIA ADELANTE*/
+
+function moveForward(rover,direct){
+  console.log("moveForward was called")
+  
+  if(rover.x<0 || rover.x>10 || rover.y<0 || rover.y>10){ // COMPROVAR QUE ESTA DENTRO DEL CUADRARO DE 10X10
+     console.log('YOU ARE OUT');
+     }
+else{
+        if(rover.direction === 'N'){
+    
+    rover.y--;
+  }
+  
+  else if(rover.direction ==='W')
+    {
+      rover.x--;
+    }
+  else if (rover.direction ==='S'){
+    
+    rover.y++;
+  }
+  else{
+    rover.x++;
+  }
+  
+  let newPosition = {x:rover.x, y:rover.y};
+  
+ rover.travelLog.push(newPosition); // con esto se ve el recorrido que hace
+  
+  
+  console.log('the position is: ', rover.travelLog);
+}
+    
+}
+
+/*FUNCION LLAMADA A FUNCIONES DE MOVIMIENTO*/
+
+function command(rover, direct){
+  
+  for(let i=0;i<direct.length;i++) //loop para hacer los movimientos segun el numero que se haya indicado
+    {
+      let direction = direct[i];
+      
+      switch(direction){
+          
+        case 'l':
+          turnLeft(rover,direction);
+          break;
+        case 'r':
+         turnRight(rover,direction);
+          break;
+        case 'f':
+          moveForward(rover,direction);
+          break;
+      
+      }
+      
+    }
+  
+}
+
+/* MOVIMIENTOS */
+
+command(rover,'');

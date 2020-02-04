@@ -11,7 +11,6 @@
     <aside class="quote"><i>"The best experience of our lives"</i>
       <p>Ariel Quiñones & Gonzalo Manrique, Ironhack founders</p></aside>
 </header>
-
     <section class="dark-background text">
       <article><h3>Hello!</h3>
         <p>Welcome to Ironhack dive, the best adventure you will ever have.</p>
@@ -103,7 +102,6 @@
                 </tr>
             </tbody>
                 </table>
-    
             <h3> Schedule a Time Slot</h3>
    
             <footer class="dark-background footer">
